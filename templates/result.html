@@ -1,33 +1,32 @@
-
 {% extends 'base.html' %}
 
 {% block content %}
 {% set gene = gene.upper() %}
-  <h1>{% block title %} The Barcode for {{gene}} {% endblock %}</h1>
-  <div class="second-title">
+<h1>{% block title %} The Barcode for {{gene}} {% endblock %}</h1>
+<div class="second-title">
 
+  {% for row in info %}
+  <p>{{row['summary']}}</p>
+  {% endfor %}
+
+  <table>
+    <tr>
+      <td>Name</td>
+      <td>Symbol</td>
+      <td>Uniprot</td>
+    </tr>
     {% for row in info %}
-    <p>{{row['summary']}}</p>
+    <tr>
+      <td>{{ row['name']}}</td>
+      <td>{{ row['symbol'] }}</td>
+      <td>{{ row['uniprot.Swiss-Prot'] }}</td>
+    </tr>
     {% endfor %}
+  </table>
 
-    <table>
-        <tr>
-          <td>Name</td>
-          <td>Symbol</td>
-          <td>Uniprot</td>
-        </tr>
-    {% for row in info %}
-        <tr>
-          <td>{{ row['name']}}</td>
-          <td>{{ row['symbol'] }}</td>
-          <td>{{ row['uniprot.Swiss-Prot'] }}</td>
-        </tr>
-    {% endfor %}
-    </table>
+  <button type="button" name="button" style="margin-top:1em;">
+    <a href="{{url_for('plot_png', gene=gene)}}">Barcode for {{gene}}</a>
+  </button>
 
-    <button type="button" name="button" style="margin-top:1em;">
-      <a href="{{url_for('plot_png', gene=gene)}}">Barcode for {{gene}}</a>
-    </button>
-
-  </div>
+</div>
 {% endblock %}

@@ -1,9 +1,8 @@
-
 {% extends 'base.html' %}
 
 {% block content %}
 <h1 class="error">CANNOT FIND THE PAGE YOU ARE LOOKING FOR </h1>
 {%if  error=='error_geosearch'%}
-  <p>too many datasets found please refine your search query</p>
+<p>too many datasets found please refine your search query</p>
 {%endif%}
 {% endblock %}

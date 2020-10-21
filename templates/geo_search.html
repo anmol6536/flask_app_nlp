@@ -1,57 +1,56 @@
-
 {% extends 'base.html' %}
 <p>
 
 </p>
 {% block content %}
-  <h1>{% block title %} About GEO Search {% endblock %}</h1>
-  <div class="second-title">
-    <p>
-      This tool searches NCBI Gene Expression Omnibus and returns all relevant datasets with ftp links and other useful details like references and experiment description
-    </p>
-    <div class="container-result">
-      <form class="" action="#" method="post">
-        <input type="text" name="geo_query" placeholder="Search GEO">
-        <input type="text" name="database" value="gds">
-        <input type="submit" value="submit" class="button">
-      </form>
-    </div>
-    <p>
-
-    </p>
+<h1>{% block title %} About GEO Search {% endblock %}</h1>
+<div class="second-title">
+  <p>
+    This tool searches NCBI Gene Expression Omnibus and returns all relevant datasets with ftp links and other useful details like references and experiment description
+  </p>
+  <div class="container-result">
+    <form class="" action="#" method="post">
+      <input type="text" name="geo_query" placeholder="Search GEO">
+      <input type="text" name="database" value="gds">
+      <input type="submit" value="submit" class="button">
+    </form>
   </div>
-    <p>
+  <p>
 
-    </p>
-    {%if response=='result'%}
-    <table>
-        <tr>
-          <td>Accession</td>
-          <td>Title</td>
-          <td>Organism</td>
-          <td>Experiment Type</td>
-          <td>Number of Samples</td>
-          <td>supplementary Files</td>
-          <td>Pubmed IDs</td>
-          <td>Bioproject</td>
-        </tr>
-    {% for row in df %}
-        <tr>
-          <td><a href= "{{row['ftplink']}}">{{ row['accession']}}</a></td>
-          <td > <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={{row['accession']}}">{{ row['title'] }}</a></td>
-          <td>{{ row['taxon'] }}</td>
-          <td>{{ row['gdstype'] }}</td>
-          <td>{{ row['n_samples'] }}</td>
-          <td>{{ row['suppfile'] }}</td>
-          <td><a href="https://www.ncbi.nlm.nih.gov/pubmed{{row['pubmedids'][0]}}">{{ row['pubmedids'][0] }}</a></td>
-          <td>{{ row['bioproject'] }}</td>
+  </p>
+</div>
+<p>
 
-        </tr>
-    {% endfor %}
-    </table>
-    {%endif%}
-    <div class="spacer">
+</p>
+{%if response=='result'%}
+<table>
+  <tr>
+    <td>Accession</td>
+    <td>Title</td>
+    <td>Organism</td>
+    <td>Experiment Type</td>
+    <td>Number of Samples</td>
+    <td>supplementary Files</td>
+    <td>Pubmed IDs</td>
+    <td>Bioproject</td>
+  </tr>
+  {% for row in df %}
+  <tr>
+    <td><a href="{{row['ftplink']}}">{{ row['accession']}}</a></td>
+    <td> <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={{row['accession']}}">{{ row['title'] }}</a></td>
+    <td>{{ row['taxon'] }}</td>
+    <td>{{ row['gdstype'] }}</td>
+    <td>{{ row['n_samples'] }}</td>
+    <td>{{ row['suppfile'] }}</td>
+    <td><a href="https://www.ncbi.nlm.nih.gov/pubmed{{row['pubmedids'][0]}}">{{ row['pubmedids'][0] }}</a></td>
+    <td>{{ row['bioproject'] }}</td>
 
-    </div>
+  </tr>
+  {% endfor %}
+</table>
+{%endif%}
+<div class="spacer">
+
+</div>
 
 {% endblock %}

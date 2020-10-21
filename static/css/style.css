@@ -1,13 +1,13 @@
 html {
   height: 100%;
 }
+
 .bg {
   /* The image used */
   background-image: url("https://www.logo.wine/a/logo/Allergan/Allergan-White-Dark-Background-Logo.wine.svg");
   /* background-image: url("https://upload.wikimedia.org/wikipedia/commons/6/63/The_Aurora_Borealis_or_Northern_Lights_shine_above_Bear_Lake_in_Alaska_050910-F-MS415-009.jpg"); */
   /* Full height */
   height: 100%;
-
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
@@ -15,24 +15,23 @@ html {
   background-attachment: fixed;
 }
 
-p{
+p {
   text-align: justify;
   padding-left: 4em;
   padding-right: 4em;
-
 }
 
-a:link{
+a:link {
   color: white;
 }
 
 h1 {
-    color: #ffffff;
-    text-align: center;
-    padding: 10px;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px;
 }
 
-.container{
+.container {
   text-align: center;
   padding-top: 1vw;
   margin: auto;
@@ -40,8 +39,8 @@ h1 {
   /* border: 3px solid green; */
   padding: 10px;
   color: #ffffff;
- background-color: rgba(2, 2, 2, .30);
- backdrop-filter: blur(10px);
+  background-color: rgba(2, 2, 2, .30);
+  backdrop-filter: blur(10px);
 }
 
 .center {
@@ -51,7 +50,7 @@ h1 {
   width: 50%;
 }
 
-img{
+img {
   width: auto;
   margin: auto;
   padding: 5em;
@@ -71,10 +70,15 @@ th, td {
   padding: 8px;
 }
 
-tr:nth-child(even) {background-color: rgba(2, 2, 2, .50);}
-tr:nth-child(odd) {background-color: rgba(2, 2, 2, .80);}
+tr:nth-child(even) {
+  background-color: rgba(2, 2, 2, .50);
+}
 
-button{
+tr:nth-child(odd) {
+  background-color: rgba(2, 2, 2, .80);
+}
+
+button {
   padding: 1em;
 }
 
