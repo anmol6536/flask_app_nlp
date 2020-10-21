@@ -24,9 +24,11 @@ def search():
         gene = request.form['gene']
         try:
             if gene:
-                return render_template('result.html', gene=gene, info = information(gene))
+                return render_template('search.html', gene=gene, info = information(gene), code = 200)
+                # return render_template('result.html', gene=gene, info = information(gene))
+
         except:
-            return ("",404)
+            return ('error.html')
     return render_template('search.html')
 
 @app.route('/overview?gene=<gene>', methods=['GET','POST'])
@@ -35,7 +37,7 @@ def plot_png(gene):
         fig = ag.barcode_generator.pl().biogps_plotter(gene)
         return fig
     except:
-        return ("", 404)
+        return (render_template('error.html'))
 
 @app.route('/geo_search', methods=['GET','POST'])
 def geo_search():
@@ -44,9 +46,9 @@ def geo_search():
         if not query:
             return render_template('error.html')
         database = request.form['database']
-        df = ag.database_search_run(query)
+        df = ag.database_search_run(query, db = database)
         if 'error' in df.keys():
-            return render_template('geo_search.html', error = 'too many datasets identified try to refine search')
+            return render_template('error.html', error = 'error_geosearch')
         else:
             df['result'].pop('uids')
             df = pd.DataFrame(df['result'])

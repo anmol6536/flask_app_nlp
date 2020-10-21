@@ -5,9 +5,39 @@
     <h1>{% block title %} The Gene of interest accross Datasets {% endblock %}</h1>
     <div class="container-result">
       <form class="" action="#" method="post">
-        <input type="text" name="gene" value="MYD88">
+        <input type="text" name="gene" placeholder="Search Gene Symbols">
         <input type="submit" name="gene" value="submit">
       </form>
     </div>
+    {%if code==200%}
+    {% set gene = gene.upper() %}
+      <h1>The Barcode for {{gene}} </h1>
+      <div class="second-title">
+
+        {% for row in info %}
+        <p>{{row['summary']}}</p>
+        {% endfor %}
+
+        <table>
+            <tr>
+              <td>Name</td>
+              <td>Symbol</td>
+              <td>Uniprot</td>
+            </tr>
+        {% for row in info %}
+            <tr>
+              <td>{{ row['name']}}</td>
+              <td>{{ row['symbol'] }}</td>
+              <td>{{ row['uniprot.Swiss-Prot'] }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+
+        <button type="button" name="button" style="margin-top:1em;">
+          <a href="{{url_for('plot_png', gene=gene)}}">Barcode for {{gene}}</a>
+        </button>
+
+      </div>
+      {%endif%}
 
 {% endblock %}
