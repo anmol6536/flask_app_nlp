@@ -9,7 +9,7 @@ from flask import (
     send_file,
 )
 import os
-import allergan as ag
+import data_scrapper as ag
 import mygene
 import pandas as pd
 
